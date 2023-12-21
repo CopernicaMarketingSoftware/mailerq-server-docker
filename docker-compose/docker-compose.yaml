@@ -43,7 +43,7 @@ services:
     container_name: mailerq
     
     # build the Dockerfile in the mailerq directory
-    build: ../MailerQ-Server/
+    build: ../MailerQ-Server-Frontend/
 
     # pass on the MailerQ license key
     environment:

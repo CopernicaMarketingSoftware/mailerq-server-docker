@@ -1,7 +1,6 @@
 # Database configuration, needed to store runtime configuration settings.
 # Also the reload-interval in seconds, the number of threads for DKIM dns
 # lookups, and whether database integrity should be checked on startup.
-
 database-address:           mysql://root:root@mysql/mailerq
 
 # the queue settings
