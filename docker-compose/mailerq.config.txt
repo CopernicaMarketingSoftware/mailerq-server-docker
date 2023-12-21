@@ -1,0 +1,16 @@
+# Database configuration, needed to store runtime configuration settings.
+# Also the reload-interval in seconds, the number of threads for DKIM dns
+# lookups, and whether database integrity should be checked on startup.
+
+database-address:           mysql://root:root@mysql/mailerq
+
+# the queue settings
+rabbitmq-address:           amqp://rabbitmq
+
+# print application log to stdout
+application-log:            stdout
+
+# Minimal management console configuration, with max number of connections
+www-port:                   80
+www-dir:                    /usr/share/mailerq/www
+www-auth:                   hardcoded://mailerq:mailerq

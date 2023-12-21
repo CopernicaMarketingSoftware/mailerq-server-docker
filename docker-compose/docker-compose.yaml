@@ -1,0 +1,63 @@
+version: "3.3"
+services:
+  
+  # rabbitmq service
+  rabbitmq:
+
+    # set container name
+    container_name: rabbitmq
+    
+    # get the rabbit mq image
+    image: rabbitmq:3.8-management-alpine
+    
+    # set username and password
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    
+    # open up port 15672 to access the management console
+    ports:
+      - '15672:15672'
+      - '5672:5672'
+
+  # the mysql container
+  mysql:
+
+    # set the container name
+    container_name: mysql
+
+    # get the mysql image
+    image: mysql:5.7
+
+    restart: always
+
+    # set the environment varialbes
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'mailerq'
+
+  # the mailerq service
+  mailerq:
+
+    # set container name
+    container_name: mailerq
+    
+    # build the Dockerfile in the mailerq directory
+    build: ../MailerQ-Server/
+
+    # pass on the MailerQ license key
+    environment:
+      - LICENSE_KEY=${LICENSE_KEY}
+
+    # open up the port for the webinterface
+    ports:
+      - 8080:80
+
+    # mount files
+    volumes:
+      - ${PWD}/mailerq.config.txt:/etc/mailerq/config.txt
+
+    tmpfs:
+      - /var/log/mailerq
+
+    restart: on-failure
