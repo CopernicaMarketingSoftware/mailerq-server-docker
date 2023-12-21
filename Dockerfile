@@ -20,7 +20,6 @@ RUN apt-get update && apt-get install -y mailerq-server && rm -rf /var/lib/apt/l
 # copy our entry script to the machine
 COPY mq-entry.sh /usr/bin/mq-entry.sh
 
-
 # run MailerQ server
 ENTRYPOINT ["/usr/bin/mq-entry.sh"]
 CMD mailerq
