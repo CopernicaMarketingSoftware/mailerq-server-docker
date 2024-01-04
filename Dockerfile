@@ -18,7 +18,7 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mailerq-packages.gpg] ht
 RUN apt-get update && apt-get install -y mailerq-server mailerq-frontend && rm -rf /var/lib/apt/lists/*
 
 # copy our entry script to the machine
-COPY ../MailerQ-Server/mq-entry.sh /usr/bin/mq-entry.sh
+COPY mq-entry.sh /usr/bin/mq-entry.sh
 
 # run MailerQ server
 ENTRYPOINT ["/usr/bin/mq-entry.sh"]

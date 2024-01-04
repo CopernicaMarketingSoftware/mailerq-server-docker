@@ -43,11 +43,11 @@ services:
     container_name: mailerq
     
     # build the Dockerfile in the mailerq directory
-    build: ../MailerQ-Server-Frontend/
+    build: ../
 
     # pass on the MailerQ license key
     environment:
-      - LICENSE_KEY=${LICENSE_KEY}
+      - LICENSE_KEY=${MQ_LICENSE_KEY}
 
     # open up the port for the webinterface
     ports:
